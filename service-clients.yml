@@ -1,0 +1,23 @@
+server:
+  port: 0
+    
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application_instance_id:${random.value}}
+    leaseRenewalIntervalInSeconds: 10
+    preferIpAddress: true
+      
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 70000
+      
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
